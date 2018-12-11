@@ -5,6 +5,7 @@ USER root
 ADD . /home/circleci/app/
 RUN chown circleci /home/circleci -R
 
+RUN gem install bundler
 RUN bundle install --clean
 
 USER circleci
