@@ -1,7 +1,7 @@
 FROM darthjee/taa:0.2.0
 
-WORKDIR /home/app/goof_troop/
-ADD Gemfile* /home/app/goof_troop/
+WORKDIR /home/app/app/
+ADD Gemfile* /home/app/app/
 
 USER root
 RUN bundle install --clean
