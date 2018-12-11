@@ -1,0 +1,88 @@
+version: '2'
+services:
+  goof_troop_postgres:
+    image: postgres:9.5
+    container_name: goof_troop_postgres
+    env_file: .env
+    environment:
+      POSTGRES_USER: goof_troop
+      POSTGRES_PASSWORD: goof_troop
+    ports:
+      - 127.0.0.1:$GOOF_TROOP_POSTGRES_PORT:5432
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+
+  #################### Base  ####################
+
+  base: &base
+    build: .
+    env_file: .env
+    links:
+      - goof_troop_postgres:postgres
+    volumes:
+      - .:/home/app/goof_troop
+      - goof_troop_gems_2_5_0:/usr/local/bundle
+
+  #################### CONTAINERS ####################
+
+  goof_troop_app:
+    <<: *base
+    container_name: goof_troop_app
+    command: /bin/bash bin/server.sh
+    ports:
+      - 0.0.0.0:3000:3000
+    environment:
+      - RAILS_ENV=development
+      - GOOF_TROOP_POSTGRES_PORT=5432
+
+  goof_troop_tests:
+    <<: *base
+    container_name: goof_troop_tests
+    command: /bin/bash bin/tests.sh
+    environment:
+      - RAILS_ENV=test
+
+  goof_troop_root:
+    <<: *base
+    user: root
+    container_name: goof_troop_root
+    command: /bin/bash
+
+  goof_troop_production:
+    build:
+      context: ./
+      dockerfile: Dockerfile.production
+    env_file: .env
+    links:
+      - goof_troop_postgres:postgres
+    command: /bin/bash
+    environment:
+      - RAILS_ENV=production
+      - GOOF_TROOP_POSTGRES_PORT=5432
+    command: bin/rails server -p 8080 -e production
+    ports:
+      - 0.0.0.0:8080:8080
+
+  goof_troop_ci:
+    build:
+      context: ./
+      dockerfile: Dockerfile.ci
+    env_file: .env
+    links:
+      - goof_troop_postgres:postgres
+    command: /bin/bash
+    environment:
+      - RAILS_ENV=test
+      - GOOF_TROOP_POSTGRES_PORT=5432
+    command: bundle exec rspec
+
+  #################### CONTAINERS ####################
+
+networks:
+  default:
+    external:
+      name: goof_troop
+
+volumes:
+  goof_troop_gems_2_5_0:
+  postgres_db:
