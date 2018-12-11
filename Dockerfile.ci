@@ -1,4 +1,4 @@
-FROM darthjee/circleci_taa:0.1.0
+FROM darthjee/circleci_taa:0.2.0
 
 USER root
 
