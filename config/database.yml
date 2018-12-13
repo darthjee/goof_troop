@@ -1,12 +1,3 @@
-<%
-  socket = [
-    ENV["BOXEN_MYSQL_SOCKET"],
-    "/var/run/mysql5/mysqld.sock",
-    "/tmp/mysql.sock"
-  ].detect { |f| f && File.exist?(f) }
-  port = 5432
-%>
-
 development: &development
   adapter: postgresql
   encoding: utf8
@@ -15,11 +6,7 @@ development: &development
   username: <%= ENV["GOOF_TROOP_POSTGRES_USER"] %>
   password: <%= ENV["GOOF_TROOP_POSTGRES_PASSWORD"] %>
   host: <%= ENV["GOOF_TROOP_POSTGRES_HOST"] %>
-<% if socket %>
-  socket: <%= socket %>
-<% else %>
   port: <%= ENV["GOOF_TROOP_POSTGRES_PORT"] %>
-<% end %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
