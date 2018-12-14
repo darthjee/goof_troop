@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: darthjee/circleci_taa:0.2.0
+        environment:
+          - GOOF_TROOP_POSTGRES_HOST=goof_troop_postgres
+          - GOOF_TROOP_POSTGRES_PORT=5432
+          - GOOF_TROOP_POSTGRES_USER=goof_troop
+          - GOOF_TROOP_POSTGRES_NAME=goof_troop
+          - GOOF_TROOP_POSTGRES_PASSWORD=goof_troop
+
+      - image: circleci/postgres:9.5-alpine
+        name: goof_troop_postgres
+        environment:
+          POSTGRES_USER: goof_troop
+          POSTGRES_DB: goof_troop_test
+    steps:
+      - checkout
+      - run:
+          name: Bundle install
+          command: bundle install
+      - run:
+          name: Prepare Database
+          command: RAILS_ENV=test rake db:create db:migrate
+      - run:
+          name: Prepare Coverage
+          command: cc-test-reporter before-build
+      - run:
+          name: RSpec
+          command: bundle exec rspec
+      - run:
+          name: Report Coverage
+          command: cc-test-reporter after-build --exit-code $?
