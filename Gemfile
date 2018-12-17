@@ -14,6 +14,7 @@ gem 'tarquinn'
 gem 'bower-rails', '~> 0.11.0'
 gem 'sinclair'
 gem 'rake', '>= 12.3'
+gem 'mongoid'
 
 group :development, :test do
   gem 'factory_bot'
