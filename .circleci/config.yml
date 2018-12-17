@@ -9,12 +9,13 @@ jobs:
           - GOOF_TROOP_POSTGRES_USER=goof_troop
           - GOOF_TROOP_POSTGRES_NAME=goof_troop
           - GOOF_TROOP_POSTGRES_PASSWORD=goof_troop
-
       - image: circleci/postgres:9.5-alpine
         name: goof_troop_postgres
         environment:
           POSTGRES_USER: goof_troop
           POSTGRES_DB: goof_troop_test
+      - image: circleci/mongo:3.4-jessie-ram
+        name: goof_troop_mongo
     steps:
       - checkout
       - run:
