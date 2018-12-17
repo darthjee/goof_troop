@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: darthjee/circleci_taa:0.2.0
+      - image: darthjee/circleci_taa:0.2.1
         environment:
           - GOOF_TROOP_POSTGRES_HOST=goof_troop_postgres
           - GOOF_TROOP_POSTGRES_PORT=5432
