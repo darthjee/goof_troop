@@ -21,7 +21,6 @@ services:
       - goof_troop_postgres:postgres
     volumes:
       - .:/home/app/app
-      - goof_troop_gems_2_5_0:/usr/local/bundle
 
   #################### CONTAINERS ####################
 
