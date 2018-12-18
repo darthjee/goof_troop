@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :endpoint, class: Endpoint do
     name      { 'test endpoint' }
-    responses { [1, 2] }
+    responses { [{ code: 200 }, { code: 500 }] }
   end
 end

@@ -31,8 +31,12 @@ describe Endpoint do
   end
 
   describe '#responses' do
-    it 'returns an array' do
+    it 'returns an array of responses' do
       expect(endpoint.responses).to be_a(Array)
+      expect(endpoint.responses).to have(2).responses
+      endpoint.responses.each do |response|
+        expect(response).to be_a(Response)
+      end
     end
   end
 end
