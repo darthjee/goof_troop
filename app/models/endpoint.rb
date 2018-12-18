@@ -3,5 +3,6 @@ class Endpoint
   include Mongoid::Timestamps
 
   field :name, type: String
+  field :responses, type: Array
 end
 

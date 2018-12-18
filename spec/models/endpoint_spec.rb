@@ -29,4 +29,10 @@ describe Endpoint do
       expect(endpoint.updated_at).to be_a(ActiveSupport::TimeWithZone)
     end
   end
+
+  describe '#responses' do
+    it 'returns an array' do
+      expect(endpoint.responses).to be_a(Array)
+    end
+  end
 end
