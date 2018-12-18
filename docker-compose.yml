@@ -6,6 +6,8 @@ services:
     env_file: .env
     ports:
       - 127.0.0.1:$GOOF_TROOP_MONGO_PORT:27017
+    volumes:
+      - goof_troop_mongo_database:/data/db
   goof_troop_postgres:
     image: postgres:9.5
     container_name: goof_troop_postgres
@@ -92,3 +94,4 @@ networks:
 volumes:
   goof_troop_gems_2_5_0:
   postgres_db:
+  goof_troop_mongo_database:
