@@ -17,4 +17,16 @@ describe Endpoint do
       expect(endpoint.name).to eq(name)
     end
   end
+
+  describe '#created_at' do
+    it 'returns time of creation' do
+      expect(endpoint.created_at).to be_a(ActiveSupport::TimeWithZone)
+    end
+  end
+
+  describe '#updated_at' do
+    it 'returns time of update' do
+      expect(endpoint.updated_at).to be_a(ActiveSupport::TimeWithZone)
+    end
+  end
 end
