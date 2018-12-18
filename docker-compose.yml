@@ -32,6 +32,9 @@ services:
       - .:/home/app/app
 
   #################### CONTAINERS ####################
+  goof_troop_mongo_console:
+    image: mongo:3.4
+    container_name: goof_troop_mongo_console
 
   goof_troop_app:
     <<: *base
