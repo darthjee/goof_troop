@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Endpoint do
-  subject(:endpoint) { described_class.create(name: name) }
+  subject(:endpoint) { create(:endpoint, name: name) }
 
   let(:id)   { endpoint.id.to_s }
   let(:name) { 'test host' }
