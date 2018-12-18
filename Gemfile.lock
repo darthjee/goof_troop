@@ -161,6 +161,8 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
+    safe_attribute_assignment (0.0.3)
+      activesupport
     safe_yaml (1.0.4)
     sass (3.7.2)
       sass-listen (~> 4.0.0)
@@ -228,6 +230,7 @@ DEPENDENCIES
   rake (>= 12.3)
   rspec-collection_matchers
   rspec-rails
+  safe_attribute_assignment (= 0.0.3)
   sass-rails (~> 5.0)
   simplecov
   sinclair
