@@ -5,4 +5,3 @@ class Endpoint
   field :name, type: String
   embeds_many :responses
 end
-
