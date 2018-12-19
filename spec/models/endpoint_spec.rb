@@ -40,7 +40,7 @@ describe Endpoint do
     end
   end
 
-  fdescribe '#as_json' do
+  describe '#as_json' do
     let(:expected) do
       {
         'name' => name,
