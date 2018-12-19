@@ -3,33 +3,33 @@
 source 'https://rubygems.org'
 ruby '2.5.0'
 
-gem 'rails', '~> 5.2.x'
-gem 'pg'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'turbolinks'
-gem 'nokogiri', '>= 1.8.2'
 gem 'jbuilder', '~> 2.0'
+gem 'nokogiri', '>= 1.8.2'
+gem 'pg'
+gem 'rails', '~> 5.2.x'
+gem 'sass-rails', '~> 5.0'
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
 
-gem 'darthjee-core_ext', '>= 1.7.3'
-gem 'tarquinn'
 gem 'bower-rails', '~> 0.11.0'
-gem 'sinclair'
-gem 'rake', '>= 12.3'
+gem 'darthjee-core_ext', '>= 1.7.3'
 gem 'mongoid'
+gem 'rake', '>= 12.3'
 gem 'rubocop'
+gem 'sinclair'
+gem 'tarquinn'
 
 gem 'safe_attribute_assignment', '0.0.3'
 
 group :development, :test do
   gem 'factory_bot'
-  gem 'rspec-rails'
-  gem 'pry-rails'
   gem 'pry-nav'
-  gem 'zonebie'
-  gem 'simplecov'
-  gem 'rspec-collection_matchers'
+  gem 'pry-rails'
   gem 'rails-controller-testing'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'zonebie'
 end
 
 group :development do
