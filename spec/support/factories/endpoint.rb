@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :endpoint, class: Endpoint do
     name      { 'test endpoint' }

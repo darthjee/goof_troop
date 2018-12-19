@@ -24,6 +24,9 @@ jobs:
           name: Bundle install
           command: bundle install
       - run:
+          name: Rubocop
+          command: rubocop -a
+      - run:
           name: Prepare Database
           command: RAILS_ENV=test rake db:create db:migrate
       - run:
