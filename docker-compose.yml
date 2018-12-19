@@ -35,6 +35,9 @@ services:
   goof_troop_mongo_console:
     image: mongo:3.4
     container_name: goof_troop_mongo_console
+    command: mongo --host mongo goof_troop_development
+    links:
+      - goof_troop_mongo:mongo
 
   goof_troop_app:
     <<: *base
