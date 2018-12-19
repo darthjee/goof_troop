@@ -39,4 +39,21 @@ describe Endpoint do
       end
     end
   end
+
+  fdescribe '#as_json' do
+    let(:expected) do
+      {
+        'name' => name,
+        'responses' => [
+          { 'code' => 200 },
+          { 'code' => 500 }
+        ]
+      }
+    end
+
+    it 'returns the json of the endpoint' do
+      endpoint.responses
+      expect(endpoint.as_json).to match(hash_including(expected))
+    end
+  end
 end
