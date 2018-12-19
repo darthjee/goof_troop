@@ -45,15 +45,41 @@ describe Endpoint do
       {
         'name' => name,
         'responses' => [
-          { 'code' => 200 },
-          { 'code' => 500 }
+          hash_including('code' => 200),
+          hash_including('code' => 500)
         ]
       }
     end
 
     it 'returns the json of the endpoint' do
-      endpoint.responses
       expect(endpoint.as_json).to match(hash_including(expected))
+    end
+  end
+
+  describe '#to_json' do
+    let(:expected) do
+      {
+        '_id' => {
+          '$oid' => endpoint._id.to_s
+        },
+        'created_at' => endpoint.created_at,
+        'name' => name,
+        'responses' => [
+          {
+            '_id' => { '$oid' => endpoint.responses.first._id.to_s },
+            'code' => 200
+          },
+          {
+            '_id' => { '$oid' => endpoint.responses.last._id.to_s },
+            'code' => 500
+          }
+        ],
+        'updated_at' => endpoint.updated_at
+      }.to_json
+    end
+
+    it 'returns the json of the endpoint' do
+      expect(endpoint.to_json).to eq(expected)
     end
   end
 end
